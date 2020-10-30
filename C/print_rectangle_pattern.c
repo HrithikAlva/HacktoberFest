@@ -1,52 +1,28 @@
-/* C program to print solid rectangle star pattern */
-
-#include <stdio.h>
-
-/* Function to print solid rectangle*/
-
-void solid_rectangle(int n, int m)
-
-{
-
-int i, j;
-
-for (i = 1; i <= n; i++)
-
-{
-
-for (j = 1; j <= m; j++)
-
-{
-
-printf(“*”);
-
-}
-
-printf(“n”);
-
-}
-
-}
+/#include <stdio.h>
 
 int main()
-
 {
+    int i, j, rows, columns;
 
-int rows, columns;
+    /* Input rows and columns from user */
+    printf("Enter number of rows: ");
+    scanf("%d", &rows);
+    printf("Enter number of columns: ");
+    scanf("%d", &columns);
 
-printf(“nEnter the number of rows : “);
+    /* Iterate through each row */
+    for(i=1; i<=rows; i++)
+    {
+        /* Iterate through each column */
+        for(j=1; j<=columns; j++)
+        {
+            /* For each column print star */
+            printf("*");
+        }
+        
+        /* Move to the next line/row */
+        printf("\n");
+    }
 
-scanf(“%d”, &rows);
-
-printf(“nEnter the number of columns : “);
-
-scanf(“%d”, &columns);
-
-printf(“n”);
-
-solid_rectangle(rows, columns);
-
-return 0;
-
+    return 0;
 }
-
