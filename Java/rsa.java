@@ -1,88 +1,63 @@
-import java.math.BigDecimal;
 import java.math.BigInteger;
 import java.util.Random;
 import java.util.Scanner;
-
-
 public class rsa {
-	static boolean prime(int p){
-   	 if(p==1||p==0){
-   		 return false;
-   	 }
-   	 for(int i=2;i<p;i++){
+	static int prime(int p){
+   	 for(int i=2;i<=p/2;i++){
    		 if(p%i==0)
    			 return false;
    	 }
    	 return true;
     }
     static boolean gcd(int a,int b){
-   	 if((a==1||b==1)||(a==0||b==0)){
-   		 return false;
-   	 }
-   	 else{
-   	 for(int i=2;i<=a;i++){
+   	int x=(a<b)?e:p;
+   	 for(int i=2;i<=x;i++){
    		 if(((a%i)==0)&&((b%i)==0)){
-   			 return false;
+   			 return i;
    		 }
-   	 }
-   	}
-   
+	 }
     return true;
    }
 public static void main(String[] args) {
-	    int p = 0,q=0,n,phi=0,e,d,ip1,ip2;
-		Scanner in= new Scanner(System.in);
-		Random r=new Random();
-		boolean flag=false;
-		while(flag){
-			ip1=r.nextInt(100);
-			if((prime(ip1))==true){
-				p=ip1
-				flag=false;
-				
-			}
+	Random r=new Random();
+	    int p,q,n,phi,e,d=0;
+		do{
+			p=rand.nextInt(100)+2;
 		}
-		flag=true;
-		while(flag){
-			ip2=r.nextInt(100);
-			if(((prime(ip2))==true)&&(p!=ip2)){
-				q=ip2
-				flag=false;
-				
-			}
+		while(prime(p))==true){
+			Sytem.out.println("P="+p);
+		do{
+			q=rand.nextInt(100)+2;
 		}
-		
-		System.out.println("p:"+p+" q:"+q);
+		while(prime(q))==true)&&(p!=q));
+		Sytem.out.println("Q="q);
+		n=p*q;
+		System.out.println("n:"+n);
 		phi=(p-1)*(q-1);
+		System.out.println("Phi="phi);
 		for(e=2;e<phi;e++){
 			if(gcd(e,phi)==true){
 				break;
-				
 			}
 		}
-		System.out.println("n:"+n);
-		for(d=1;d<n;d++){
-			if(((e*d)%phi)==1)
-		}
-		System.out.println("phi:"+phi);
-		System.out.println("PUBLIC KEY:"+e+"\nPRIVATE KEY:"+d);
-		int t = 0,ip;
-		flag=true;
-		while(flag){
-			ip=r.nextInt(20);
-			if(ip<n&&ip!=0){
-				flag=false;
-				
+			System.out.println("PUBLIC KEY:"+e);
+		for(d=1;d<phi;d++){
+			if(((e*d)%phi)==1){
+				break;
 			}
 		}
-	System.out.println("INPUT VALUE IS "+t);
-	double cip=((Math.pow(t,e))%(double)n);
-	System.out.println("CIPHER TEXT IS "+cip);
-	BigInteger c=BigDecimal.valueOf(cip).toBigInteger();
+		System.out.println("PUBLIC KEY:"+d);
+		int ip;
+		do{
+			ip=rand.nextInt(100);
+		}
+		while(ip==0 && ip<n);
+	System.out.println("INPUT VALUE IS "+ip);
+	lon ct=(long)(Math.pow(ip,e))%n);
+	System.out.println("CIPHER TEXT IS "+ct);
+	BigInteger c=BigInteger.valueOf(ct);
 	BigInteger N=BigInteger.valueOf(n);
 	BigInteger plain=c.pow(d).mod(N);
 	System.out.println("PLAIN TEXT IS "+plain);
 		}
-
-
 }
